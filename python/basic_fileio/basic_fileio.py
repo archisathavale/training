@@ -11,33 +11,27 @@ def return_file_contents(file_name, odd=None , line_nos=True ):
                 if no % 2 == 0:
                     line_str = str(no) + " " + i.strip()
                     lines_list.append(line_str)
-                    separated_line = "  ".join(map(str,lines_list))
             if line_nos == False:
                 if no % 2 == 0:
                     line_str = " " + i.strip()
-                    lines_list.append(line_str)
-                    separated_line = "  ".join(map(str,lines_list))      
+                    lines_list.append(line_str)   
         if odd == True:
             if line_nos == True:       
                 if no % 2 == 1:
                     line_str = str(no) + " " + i.strip()
                     lines_list.append(line_str)
-                    separated_line = "  ".join(map(str,lines_list))
             if line_nos == False:
                 if no % 2 == 1:
-                    line_str = str(no) + " " + i.strip()
-                    lines_list.append(line_str)    
-                    separated_line = "  ".join(map(str,lines_list))
+                    line_str = "" + i.strip()
+                    lines_list.append(line_str)
         if odd == None:
             if line_nos == False:
                 line_str = " " + i.strip()
                 lines_list.append(line_str)
-                separated_line = "  ".join(map(str,lines_list))
             if line_nos == True:
                 line_str = str(no) + " " + i.strip()
                 lines_list.append(line_str)
-                separated_line = "".join(map(str,lines_list))
-    return separated_line
+    return lines_list
 
 
 def find_lines(file_name, word, ignore_case=True, match_whole_word=True):
