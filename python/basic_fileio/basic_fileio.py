@@ -13,7 +13,7 @@ def return_file_contents(file_name, odd=None , line_nos=True ):
                     lines_list.append(line_str)
             if line_nos == False:
                 if no % 2 == 0:
-                    line_str = " " + i.strip()
+                    line_str = "" + i.strip()
                     lines_list.append(line_str)   
         if odd == True:
             if line_nos == True:       
@@ -26,7 +26,7 @@ def return_file_contents(file_name, odd=None , line_nos=True ):
                     lines_list.append(line_str)
         if odd == None:
             if line_nos == False:
-                line_str = " " + i.strip()
+                line_str = "" + i.strip()
                 lines_list.append(line_str)
             if line_nos == True:
                 line_str = str(no) + " " + i.strip()
