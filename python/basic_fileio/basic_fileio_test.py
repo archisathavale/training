@@ -19,18 +19,19 @@ def test_case_3():
 def test_case_4():
     lines = return_file_contents("my_file.txt",line_nos=False,odd=True)
     assert lines[0][0:2] == 'To'
-    assert lines[2][0:8] == 'Maintain'
-    assert lines[4][0] == "Don't"
+    assert lines[1][0:8] == 'Maintain'
+    assert lines[4][7:11] == "face"
 
 def test_case_5():
     lines = return_file_contents("my_file.txt",line_nos=False,odd=False)
-    assert lines[0][0] == 'Clean'
-    assert lines[2][0] == 'Cover'
+    print (lines[-1][0:5])
+    assert lines[-1][0:5] == 'Take'
+    assert lines[3][13:18] == 'Cover'
     assert lines[1][0] == 'Wear'
     assert lines[-1][0] == 'Take'
 
 def test_case_6(return_file_contents):
-    return_file_contents("my_file.txt",line_nos=False,odd=None)
+    lines = return_file_contents("my_file.txt",line_nos=False,odd=None)
     assert lines[0][0] == 'To'
     assert lines[-2][0] == 'Keep'
     assert lines[-3][1] == 'your'
