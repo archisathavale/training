@@ -1,54 +1,47 @@
-class Subject:
-    def __init__(self,name):
-        self.name = name
-
-    def __repr__(self):
-        return 'Subject name = %s' % (self.name)
-
 class Course:
-    def __init__(self,course_name,semester,enrollments = 0):
+    def __init__(self,course_name,semester,capacity = 10):
         self.course_name = course_name
         self.semester = semester
-        self.enrollments = enrollments
-
-    def print_all(self):
-        print (self.__class__.in)
+        self.enrollments = []
+        self.capacity = capacity
     def __repr__(self):
-        return 'Course name = %s , Semester = %s , Enrollments = %d' % (self.course_name , self.semester , self.enrollments)
+        return 'Course name = %s , Semester = %s , Enrollments = %s, count = %s' % (self.course_name , self.semester , self.enrollments, len(self.enrollments))
 
 
 class Student:
-    def __init__(self,name,roll_no,year,course_chosen):
+    def __init__(self,name,roll_no,year):
         self.name = name
         self.roll_no = roll_no
         self.year = year
-        self.course_chosen = course_chosen
+        self.enrolled_courses = []
 
-    def enrolled_to_course(self):
-        if self.course_chosen == self.course_name:
-            self.enrollments += 1
-
-    def __repr__(self):
-        return 'Student Name = %s , Roll_no = %d , Year_studying_in = %s , course_Chosen = %s' % (self.name , self.roll_no , self.year , self.course_chosen)
-
-class Professor:
-    def __init__(self,name,subjects):
-        self.name = name 
-        self.subjects = subjects
+    def enroll_to_course(self,course):
+        if len(course.enrollments) < course.capacity:
+            if course not in self.enrolled_courses:
+                self.enrolled_courses.append(course)
+                course.enrollments.append(self)
+        else:
+            print ("Cannot enroll student: ",self.name)
 
     def __repr__(self):
-        return 'Professor Name = %s , Subjects_taught = %s' % (self.name,self.subjects)
+            return 'Student Name = %s , Roll_no = %d , Year_studying_in = %s , enrolled_course = %s' % (self.name , self.roll_no , self.year , self.enrolled_courses)
 
 
 if __name__ == "__main__":
 
-    course1 = Course('VLSI', 'VII')
-    course2 = Course('EDC', 'VI')
-    course3 = Course('DE' , 'III')
-    stud = Student('Archis' , 6125 , 'BE' , 'VLSI')
-    stud1 = Student ('Vikram',6122 , 'BE', 'EDC')
-    stud2 = Student('Arnav', 5170 , 'TE' , 'DE' )
-    stud3 = Student('Soham', 6177,'TE' , 'SS')
-    #stud4 = Student('Vijay' , 6546 , 'BE')
-    stud.enrolled_to_course()
-    print (course1.__repr__())
+    course1 = Course('VLSI','VII',2)
+    course2 = Course('EDC','IV',3)
+    course3 = Course('SS','III',2)
+    
+    stud = Student('Archis' , 6125 , 'BE')
+    stud1 = Student('Vikram',6122 , 'BE')
+    #stud2 = Student('Arnav', 5170 , 'TE')
+    #stud3 = Student('soham', 6116,'BE')
+    
+    stud.enroll_to_course(course1)
+    stud1.enroll_to_course(course1)
+    #stud2.enroll_to_course(course2)
+    
+    print (course1)
+    #print (course2)
+    #print (course3)
