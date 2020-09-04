@@ -273,3 +273,136 @@ range is an in-built function used for iterating over a sequence of numbers.
 60
 >>> 4+5+6+7+8+9+10+11
 60
+
+Section 4.4
+""""""""""
+Break and continue statements and else clause
+The break statement breaks out of the innermost loop in a FOR or WHILE loop.
+
+**********
+prime numbers upto 20 using break statement
+>>> for a in range(2,20):
+...     for b in range(2,a):
+...             if a % b == 0:
+...                     print(a,'is composite number')
+...                     break
+...     else:
+...             print(a,'is prime number')
+... 
+2 is prime number
+3 is prime number
+4 is composite number
+5 is prime number
+6 is composite number
+7 is prime number
+8 is composite number
+9 is composite number
+10 is composite number
+11 is prime number
+12 is composite number
+13 is prime number
+14 is composite number
+15 is composite number
+16 is composite number
+17 is prime number
+18 is composite number
+19 is prime number
+20 is composite number
+
+**********
+odd even numbers using continue statement
+>>> for num in range(2,15):
+...     if num % 2 == 0:
+...             print (num,':even no')
+...             continue
+...     else:
+...             print (num,':odd no')
+... 
+2 :even no
+3 :odd no
+4 :even no
+5 :odd no
+6 :even no
+7 :odd no
+8 :even no
+9 :odd no
+10 :even no
+11 :odd no
+12 :even no
+13 :odd no
+14 :even no
+
+Section 4.5
+""""""""""
+
+Pass statement
+''''''''''
+pass statement does nothing.
+It is used to ignore syntax error that might occur in a loop.
+
+**********
+>>> while True:
+...     pass
+...
+
+Section 4.6
+""""""""""
+
+Defining functions
+''''''''''
+Functions can be user created.
+using def() keyword we can creat any function to implement our logic.
+we can pass arguments inside the '()' paranthesis which we are going to use in the function.
+arguments can be default or user input.
+**********
+>>> def fib(n):
+...     a , b = 0 , 1
+...     while a < n:
+...             print (a)
+...             a , b = b , a+b
+... 
+>>> fib(10)
+0
+1
+1
+2
+3
+5
+8
+
+Section 4.7
+""""""""""
+More on functions
+''''''''''
+There are three forms of arguments which can be passed to a function.
+
+section 4.7.1
+""""""""""
+Default argument values
+''''''''''
+Default arguments are the arguments whose values are already in the code or which are defined.
+These arguments are also mutable.Users can define them too.
+**********
+>>> def test(a,b=4):
+...     if a < 0 :
+...             print ('a is neg')
+...     if a > 0 :
+...             print ('a is positive')
+...     if a == 0:
+...             print ('a is 0')
+...     if b > 0 :
+...             print ('b is positive')
+...     if b < 0 :
+...             print ('b is neg')
+...     if b == 0:
+...             print ('b is 0')
+... 
+>>> test(6)
+a is positive
+b is positive
+>>> test(4,-2)
+a is positive
+b is neg
+>>> test(b=-7,a=0)
+a is 0
+b is neg
