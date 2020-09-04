@@ -24,8 +24,6 @@ class Student:
         self.year = year
         #Empty list for storing courses 
         self.enrolled_courses = []
-        self.courses_names_list = []
-        self.student_names_list = []
     #creating a method for a student to enroll for a course
     def enroll_to_course(self,course):
         #List of current semesters
@@ -88,12 +86,39 @@ class Student:
         return 'Student Name = %s , Roll_no = %d , Year_studying_in = %s , enrolled_course = %s' % (self.name , self.roll_no , self.year , a)
             
 class Professor:
-    def __init__(self,prof_name,subjects_teach):
+    def __init__(self,prof_name, subjects_taught = []):
         self.prof_name = prof_name
-        self.subjects_teach = subjects_teach
+        self.subjects_taught = subjects_taught
+        
 
-    def assign_course_to_professor(self,subjects_teach):
-        pass
+    def __repr__(self):
+        return 'Professor Name = %s , Subjects_Taught = %s' % (self.prof_name , self.subjects_taught)
+
+class Department:
+    def __init__(self):
+        self.prof_list = []
+        self.subject_list = []
+    
+    def assign_course_to_professor(self,professor):
+        if professor.prof_name not in self.prof_list:
+            self.prof_list.append(professor.prof_name)
+
+        for i in professor.subjects_taught:
+            if i not in self.subject_list:
+                self.subject_list.append(i)
+
+
+        for i in range(len(self.prof_list)):
+            #for j in range(i,len(self.subject_list)):
+            if self.prof_list[i] in professor.prof_name:
+                if self.subject_list[i] in professor.subjects_taught:
+                    print (prof)
+
+    def __repr__(self):
+        return 'Professor_names = %s  \nSubjects = %s '  % (self.prof_list , self.subject_list)
+
+
+
 if __name__ == "__main__":
 
     course1 = Course('VLSI','VIII',2)
@@ -136,12 +161,26 @@ if __name__ == "__main__":
     print (course7)
 
 
-    print (stud)
     print (stud1)
+    print (stud)
     print (stud2)
     print (stud3)
     print (stud4)
     print (stud5)
     print (stud6)
     print (stud7)
-    print (stud8)
+    print (stud8)   
+
+
+    prof1 = Professor('Kishor',['EDC','VLSI'])
+    prof2 = Professor('Vilas',['SS','VLSI'])
+
+    dept = Department()
+    dept.assign_course_to_professor(prof1)
+    dept.assign_course_to_professor(prof2)
+
+    print (dept)
+
+
+    print (prof1)
+    print (prof2)
