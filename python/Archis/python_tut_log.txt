@@ -406,3 +406,8 @@ b is neg
 >>> test(b=-7,a=0)
 a is 0
 b is neg
+
+section 4.7.2
+""""""""""
+keyword arguments
+''''''''''
